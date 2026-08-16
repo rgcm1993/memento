@@ -1,0 +1,8 @@
+bot/token.txt
+bot/admin.txt
+bot/db.sqlite3
+bot/db.sqlite3-shm
+bot/db.sqlite3-wal
+bot/bot.log
+bot/supervisor.log
+bot/__pycache__/
