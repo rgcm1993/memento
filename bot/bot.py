@@ -72,7 +72,7 @@ TR = {
                          "Pulsa el botón de pago de abajo para pagar con Telegram Stars."),
         "no_auth": "No autorizado.",
         "test_factura": "Factura de prueba: <b>no te cobra nada</b> salvo que confirmes el pago.",
-        "stats_titulo": "<b>Stats</b>\nUsuarios: {u} · Premium: {p} · Recordatorios activos: {r}\nReferidos: {ref} · Ingresos: {rev} ⭐",
+        "stats_titulo": "<b>Stats</b>\nUsuarios: {users} · Premium: {p} · Recordatorios activos: {r}\nReferidos: {ref} · Ingresos: {rev} ⭐",
         "ref_inviter": "🎁 ¡Un amigo se unió por tu enlace! Te regalo 1 mes premium (hasta el {until}).",
         "ref_welcome": "🎉 ¡Bienvenido! Has llegado por el enlace de un amigo. Disfruta de Memento.",
         "compartir": ("🎁 <b>Comparte y gana premium</b>\n\n"
@@ -115,7 +115,7 @@ TR = {
                          "Tap the payment button below to pay with Telegram Stars."),
         "no_auth": "Not authorized.",
         "test_factura": "Test invoice: <b>you are not charged</b> unless you confirm the payment.",
-        "stats_titulo": "<b>Stats</b>\nUsers: {u} · Premium: {p} · Active reminders: {r}\nReferrals: {ref} · Revenue: {rev} ⭐",
+        "stats_titulo": "<b>Stats</b>\nUsers: {users} · Premium: {p} · Active reminders: {r}\nReferrals: {ref} · Revenue: {rev} ⭐",
         "ref_inviter": "🎁 A friend joined through your link! Here is 1 month of premium (until {until}).",
         "ref_welcome": "🎉 Welcome! You came through a friend's link. Enjoy Memento.",
         "compartir": ("🎁 <b>Share and earn premium</b>\n\n"
@@ -462,7 +462,7 @@ def cmd_stats(conn, chat, u, args):
     n_rem = conn.execute("SELECT COUNT(*) c FROM reminders WHERE done=0").fetchone()["c"]
     rev = conn.execute("SELECT COALESCE(SUM(stars),0) s FROM transactions").fetchone()["s"]
     n_ref = conn.execute("SELECT COUNT(*) c FROM referrals").fetchone()["c"]
-    send(chat["id"], T(u, "stats_titulo", u=n_users, p=n_prem, r=n_rem, ref=n_ref, rev=rev))
+    send(chat["id"], T(u, "stats_titulo", users=n_users, p=n_prem, r=n_rem, ref=n_ref, rev=rev))
 
 
 def grant_premium(conn, user_id, days=None):
