@@ -90,7 +90,7 @@ TR = {
                   "• <code>/nuevo mañana 09:30 llamar a X</code>\n"
                   "• <code>/nuevo 20-08 12:00 cita médico</code>\n"
                   "• <code>/nuevo 2026-12-31 23:59 año nuevo</code>\n\n"
-                  "Commands: /lista · /hoy · /borrar &lt;id&gt; · /premium · /compartir\n\n"
+                   "Commands: /lista · /hoy · /borrar &lt;id&gt; · /premium · /share\n\n"
                   "Free: {free} active reminders. Premium: unlimited + priority."),
         "nuevo_uso": "Usage: <code>/nuevo when text</code>\n"
                      "Ex: <code>/nuevo mañana 09:30 llamar a X</code>",
@@ -571,7 +571,7 @@ def handle_message(conn, msg):
         cmd_borrar(conn, chat, u, rest)
     elif cmd == "/premium":
         cmd_premium(conn, chat, u, rest)
-    elif cmd == "/compartir":
+    elif cmd in ("/compartir", "/share"):
         cmd_compartir(conn, chat, u, rest)
     elif cmd in ("/invoice-test",):
         cmd_invoice_test(conn, chat, u, rest)
